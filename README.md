@@ -16,3 +16,12 @@ I'm doing this with very limited time as a small project to learn some Golang am
 - Use oauth2 for users. Integrate with auth0?
 - Leverage AWS Lambda & Dynamodb and use static web page since it will be low & irregular traffic
 - Continue!
+
+### Detailed technical setup ideas
+
+- S3 & CloudFront to serve static page
+  - jQuery to on client side fetch dynamic data like products 
+- Use AWS cognito to authenticate users
+- API Gateway backed by AWS Cognito user pool as authorizer
+- Lambdas to handle requests
+- DynamoDb to handle inventory & transactions
