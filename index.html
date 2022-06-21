@@ -2,25 +2,14 @@
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        
-        <script>
-            $(function(){
-                $.ajax({
-                    url: "http://localhost:8080/user/foo",
-                    type: "GET",
-                    dataType: "json"
-                }).then(function(response) {
-                    $(".products").append(response.user);
-                });
-            }); 
-        </script>
-    </head> 
+        <script src="list-products.js"></script>
+    </head>
 
     <body>
-        <h1>Hello there!</h1>
-        <div>
-            <p class="products">API responded with: </p>
-        </div>
+        <h1>Fridge Mate</h1>
+        <h2>Currently, this is what the fridge has to offer:</h2>
+        <table id="products">
+        </table>
     </body>
 
 </html>
