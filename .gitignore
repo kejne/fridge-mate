@@ -1,5 +1,8 @@
-*/
+*
 !LICENSE
 !README.md
 !function
 !server
+!*.js
+!.gitignore
+!index.html
