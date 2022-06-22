@@ -6,3 +6,5 @@
 !*.js
 !.gitignore
 !index.html
+!infrastructure
+
