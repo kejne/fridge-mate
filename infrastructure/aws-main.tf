@@ -15,6 +15,10 @@ provider "aws" {
   region = "eu-north-1"
 }
 
+provider "aws" {
+  alias = "acm_provider"
+  region = "us-east-1"
+}
 
 resource "random_pet" "lambda_bucket_name" {
   prefix = "lambda-artifacts"
@@ -26,4 +30,7 @@ resource "aws_s3_bucket" "lambda_bucket" {
   force_destroy = true
 }
 
+locals {
+  mime_types = jsondecode(file("${path.module}/mime.json"))
+}
 

@@ -1,0 +1,6 @@
+*
+!.gitignore
+!*.tf
+!*.tfvars
+!*.json
+!issue_certificate/

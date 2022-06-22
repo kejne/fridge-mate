@@ -1,6 +1,6 @@
 $(function () {
     $.ajax({
-        url: "http://localhost:8080/products",
+        url: "assets/products.json",
         type: "GET",
         dataType: "json"
     })

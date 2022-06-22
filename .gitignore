@@ -1,10 +1,8 @@
-*
+*/
 !LICENSE
 !README.md
-!function
-!server
-!*.js
-!.gitignore
+!function/
+!server/
+!infrastructure/
+!site/
 !index.html
-!infrastructure
-
