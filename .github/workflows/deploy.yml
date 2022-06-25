@@ -78,6 +78,10 @@ jobs:
     - name: Build
       working-directory: ./function
       run: go build -v -o main .
+    
+    - name: Check dir
+      working-directory: ./function
+      run: ls -l 
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
