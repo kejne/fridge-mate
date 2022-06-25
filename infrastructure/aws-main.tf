@@ -20,6 +20,14 @@ provider "aws" {
   region = "us-east-1"
 }
 
+cloud {
+    organization = "teashaped"
+
+    workspaces {
+      name = "fridge-mate"
+    }
+  }
+
 resource "random_pet" "lambda_bucket_name" {
   prefix = "lambda-artifacts"
   length = 1
