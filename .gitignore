@@ -1,4 +1,5 @@
-*
+.vscode
+.tmp
 !LICENSE
 !README.md
 !function/
@@ -6,3 +7,4 @@
 !infrastructure/
 !site/
 !index.html
+!.gitignore
