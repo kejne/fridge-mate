@@ -55,6 +55,26 @@ jobs:
       run: terraform plan -no-color -input=false
       continue-on-error: true
 
+    - name: Create comment
+      uses: peter-evans/create-or-update-comment@v2
+      if: github.event_name == 'pull_request'
+      env:
+        PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+      with:
+        body: |
+          #### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
+          #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
+          #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
+          #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
+
+          <details><summary>Show Plan</summary>
+
+          \`\`\`\n
+          ${process.env.PLAN}
+          \`\`\`
+
+          </details>
+
     - name: Update Pull Request
       uses: actions/github-script@v6
       if: github.event_name == 'pull_request'
