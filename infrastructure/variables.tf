@@ -1,5 +1,5 @@
 variable "bucket_name" {
-  type = string
+  type    = string
   default = "fridge-mate"
 }
 
