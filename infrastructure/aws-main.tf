@@ -1,4 +1,12 @@
 terraform {
+
+  cloud {
+    organization = "teashaped"
+
+    workspaces {
+      name = "fridge-mate"
+    }
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -19,14 +27,6 @@ provider "aws" {
   alias  = "acm_provider"
   region = "us-east-1"
 }
-
-cloud {
-    organization = "teashaped"
-
-    workspaces {
-      name = "fridge-mate"
-    }
-  }
 
 resource "random_pet" "lambda_bucket_name" {
   prefix = "lambda-artifacts"
