@@ -21,8 +21,8 @@ resource "aws_lambda_function" "getproducts_lambda" {
   s3_bucket = aws_s3_bucket.lambda_bucket.id
   s3_key    = aws_s3_bucket_object.getproducts_object.key
 
-  runtime = "go1.x"
-  handler = "main"
+  runtime     = "go1.x"
+  handler     = "main"
   memory_size = 128
 
   source_code_hash = data.archive_file.getproducts.output_base64sha256
