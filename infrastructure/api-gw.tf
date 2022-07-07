@@ -61,7 +61,7 @@ resource "aws_lambda_permission" "api_gw" {
 resource "aws_api_gateway_authorizer" "authorizer" {
   name          = "user-authorizer"
   type          = "COGNITO_USER_POOLS"
-  rest_api_id   = "${aws_apigatewayv2_api.lambda.id}"
+  rest_api_id   = aws_apigatewayv2_api.lambda.id
   provider_arns = ["${aws_cognito_user_pool.user_pool.arn}"]
 }
 
