@@ -1,7 +1,10 @@
 resource "aws_s3_bucket" "fridge_mate" {
   bucket = var.bucket_name
   policy = data.aws_iam_policy_document.website_policy.json
+}
 
+resource "aws_s3_bucket_cors_configuration" "cors_config" {
+  bucket = aws_s3_bucket.fridge_mate.bucket
   cors_rule {
     allowed_headers = ["Authorization", "Content-Length"]
     allowed_methods = ["GET", "POST"]

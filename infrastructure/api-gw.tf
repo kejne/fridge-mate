@@ -58,6 +58,13 @@ resource "aws_lambda_permission" "api_gw" {
   source_arn = "${aws_apigatewayv2_api.lambda.execution_arn}/*/*"
 }
 
+resource "aws_api_gateway_authorizer" "authorizer" {
+  name          = "user-authorizer"
+  type          = "COGNITO_USER_POOLS"
+  rest_api_id   = "${aws_apigatewayv2_api.lambda.id}"
+  provider_arns = ["${aws_cognito_user_pool.user_pool.arn}"]
+}
+
 output "base_url" {
   description = "Base URL for API Gateway stage."
 
