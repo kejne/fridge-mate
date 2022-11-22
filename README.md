@@ -25,3 +25,34 @@ I'm doing this with very limited time as a small project to learn some Golang am
 - API Gateway backed by AWS Cognito user pool as authorizer
 - Lambdas to handle requests
 - DynamoDb to handle inventory & transactions
+
+```plantuml
+@startuml
+
+cloud "AWS" {
+  API - [Cogniton]
+  
+  database "S3" {
+    [Static site]
+  }
+  Cloudfront -- [Static site]
+  [Static site] -up-> API
+
+  node "Lambdas" {
+    [PerformTransaction]
+    [GetTransactions]
+  
+  }
+  API -down-> [PerformTransaction]
+  API -down-> [GetTransactions]
+
+  [GetTransactions] -down-> DynamoDb
+  [PerformTransaction] -down-> DynamoDb
+
+  database "DynamoDb" {
+
+  }
+}
+
+@enduml
+```
