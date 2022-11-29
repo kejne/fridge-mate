@@ -5,7 +5,7 @@ data "archive_file" "getproducts" {
   output_path = "${path.module}/../.tmp/getproducts.zip"
 }
 
-resource "aws_s3_bucket_object" "getproducts_object" {
+resource "aws_s3_object" "getproducts_object" {
   bucket = aws_s3_bucket.lambda_bucket.id
 
   key    = "getproducts.zip"
@@ -19,7 +19,7 @@ resource "aws_lambda_function" "getproducts_lambda" {
   function_name = "GetProducts"
 
   s3_bucket = aws_s3_bucket.lambda_bucket.id
-  s3_key    = aws_s3_bucket_object.getproducts_object.key
+  s3_key    = aws_s3_object.getproducts_object.key
 
   runtime     = "go1.x"
   handler     = "main"

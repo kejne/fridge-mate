@@ -1,7 +1,12 @@
 resource "aws_s3_bucket" "fridge_mate" {
   bucket = var.bucket_name
+}
+
+resource "aws_s3_bucket_policy" "fridge_mate" {
+  bucket = var.bucket_name
   policy = data.aws_iam_policy_document.website_policy.json
 }
+
 
 resource "aws_s3_bucket_cors_configuration" "cors_config" {
   bucket = aws_s3_bucket.fridge_mate.bucket
@@ -40,7 +45,7 @@ data "aws_iam_policy_document" "website_policy" {
   }
 }
 
-resource "aws_s3_bucket_object" "site-content" {
+resource "aws_s3_object" "site-content" {
   for_each     = fileset("./../site/", "**")
   bucket       = aws_s3_bucket.fridge_mate.id
   key          = each.value

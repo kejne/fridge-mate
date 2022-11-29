@@ -1,5 +1,6 @@
 .vscode
 .tmp
+.idea
 !LICENSE
 !README.md
 !function/
